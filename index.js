@@ -14,7 +14,7 @@ const config = {
 };
 
 // base URL for webhook server
-let baseURL = process.env.BASE_URL;
+let baseURL = 'https://ezbot123.herokuapp.com';
 
 // create LINE SDK client
 const client = new line.Client(config);
