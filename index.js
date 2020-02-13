@@ -541,7 +541,7 @@ function handleEvent(event) {
         "type": "text",
         "text": "\uDBC0\uDC84 LINE emoji"
     }).then(()=>{
-      client.replyMessage(event.replyMessage, )
+      client.replyMessage(event.replyMessage,onboard)
     });
 
     case 'unfollow':
