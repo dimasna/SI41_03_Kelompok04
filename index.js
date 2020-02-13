@@ -533,7 +533,7 @@ function handleEvent(event) {
       }
 
     case 'follow':
-      return client.replyMessage(event.replyToken, ['a',onboard]);
+      return client.replyMessage(event.replyToken, onboard);
 
     case 'unfollow':
       return console.log(`Unfollowed this bot: ${JSON.stringify(event)}`);
