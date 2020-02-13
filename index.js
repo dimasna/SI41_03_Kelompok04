@@ -59,6 +59,9 @@ const replyText = (token, texts) => {
 };
 
 const onboard = {
+  "type": "template",
+  "altText": "this is a carousel template",
+  "template": {
   "type": "carousel",
   "contents": [
     {
@@ -505,6 +508,7 @@ const onboard = {
       }
     }
   ]
+}
 };
 // callback function to handle a single event
 function handleEvent(event) {
@@ -536,6 +540,8 @@ function handleEvent(event) {
       return client.replyMessage(event.replyToken, {
         "type": "text",
         "text": "\uDBC0\uDC84 LINE emoji"
+    }).then(()=>{
+      client.replyMessage(event.replyMessage, )
     });
 
     case 'unfollow':
