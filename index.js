@@ -85,7 +85,7 @@ function handleEvent(event) {
       }
 
     case 'follow':
-      return replyText(event.replyToken, 'Got followed event');
+      return replyText(event.replyToken, ['a','b']);
 
     case 'unfollow':
       return console.log(`Unfollowed this bot: ${JSON.stringify(event)}`);
