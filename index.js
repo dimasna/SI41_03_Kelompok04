@@ -59,6 +59,9 @@ const replyText = (token, texts) => {
 };
 
 const onboard = {
+  "type": "flex",
+  "altText": "Flex Message",
+  "contents": {
   "type": "carousel",
   "contents": [
     {
@@ -69,7 +72,7 @@ const onboard = {
         "contents": [
           {
             "type": "image",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip1.jpg",
+            "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581535741/1_bmzbln.png",
             "size": "full",
             "aspectMode": "cover",
             "aspectRatio": "2:3",
@@ -79,42 +82,6 @@ const onboard = {
             "type": "box",
             "layout": "vertical",
             "contents": [
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "Brown's T-shirts",
-                    "size": "xl",
-                    "color": "#ffffff",
-                    "weight": "bold"
-                  }
-                ]
-              },
-              {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "¥35,800",
-                    "color": "#ebebeb",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "¥75,000",
-                    "color": "#ffffffcc",
-                    "decoration": "line-through",
-                    "gravity": "bottom",
-                    "flex": 0,
-                    "size": "sm"
-                  }
-                ],
-                "spacing": "lg"
-              },
               {
                 "type": "box",
                 "layout": "vertical",
@@ -131,11 +98,11 @@ const onboard = {
                       },
                       {
                         "type": "icon",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip14.png"
+                        "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536003/Vector_eh08dk.png"
                       },
                       {
                         "type": "text",
-                        "text": "Add to cart",
+                        "text": "Beritahu saya jika launching",
                         "color": "#ffffff",
                         "flex": 0,
                         "offsetTop": "-2px"
@@ -155,37 +122,21 @@ const onboard = {
                 "spacing": "sm",
                 "borderColor": "#ffffff",
                 "margin": "xxl",
-                "height": "40px"
+                "height": "40px",
+                "action": {
+                  "type": "postback",
+                  "label": "action",
+                  "data": "hello"
+                }
               }
             ],
             "position": "absolute",
             "offsetBottom": "0px",
             "offsetStart": "0px",
             "offsetEnd": "0px",
-            "backgroundColor": "#03303Acc",
+            "backgroundColor": "#6E78F7",
             "paddingAll": "20px",
             "paddingTop": "18px"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "SALE",
-                "color": "#ffffff",
-                "align": "center",
-                "size": "xs",
-                "offsetTop": "3px"
-              }
-            ],
-            "position": "absolute",
-            "cornerRadius": "20px",
-            "offsetTop": "18px",
-            "backgroundColor": "#ff334b",
-            "offsetStart": "18px",
-            "height": "25px",
-            "width": "53px"
           }
         ],
         "paddingAll": "0px"
@@ -199,7 +150,7 @@ const onboard = {
         "contents": [
           {
             "type": "image",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip2.jpg",
+            "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536120/2_tsndjf.png",
             "size": "full",
             "aspectMode": "cover",
             "aspectRatio": "2:3",
@@ -209,42 +160,6 @@ const onboard = {
             "type": "box",
             "layout": "vertical",
             "contents": [
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "Cony's T-shirts",
-                    "size": "xl",
-                    "color": "#ffffff",
-                    "weight": "bold"
-                  }
-                ]
-              },
-              {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "¥35,800",
-                    "color": "#ebebeb",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "¥75,000",
-                    "color": "#ffffffcc",
-                    "decoration": "line-through",
-                    "gravity": "bottom",
-                    "flex": 0,
-                    "size": "sm"
-                  }
-                ],
-                "spacing": "lg"
-              },
               {
                 "type": "box",
                 "layout": "vertical",
@@ -261,11 +176,11 @@ const onboard = {
                       },
                       {
                         "type": "icon",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip14.png"
+                        "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536003/Vector_eh08dk.png"
                       },
                       {
                         "type": "text",
-                        "text": "Add to cart",
+                        "text": "Beritahu saya jika launching",
                         "color": "#ffffff",
                         "flex": 0,
                         "offsetTop": "-2px"
@@ -292,30 +207,301 @@ const onboard = {
             "offsetBottom": "0px",
             "offsetStart": "0px",
             "offsetEnd": "0px",
-            "backgroundColor": "#9C8E7Ecc",
+            "backgroundColor": "#6E78F7",
             "paddingAll": "20px",
             "paddingTop": "18px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536121/3_hzm2au.png",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:3",
+            "gravity": "top"
           },
           {
             "type": "box",
             "layout": "vertical",
             "contents": [
               {
-                "type": "text",
-                "text": "SALE",
-                "color": "#ffffff",
-                "align": "center",
-                "size": "xs",
-                "offsetTop": "3px"
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "filler"
+                      },
+                      {
+                        "type": "icon",
+                        "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536003/Vector_eh08dk.png"
+                      },
+                      {
+                        "type": "text",
+                        "text": "Beritahu saya jika launching",
+                        "color": "#ffffff",
+                        "flex": 0,
+                        "offsetTop": "-2px"
+                      },
+                      {
+                        "type": "filler"
+                      }
+                    ],
+                    "spacing": "sm"
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "borderWidth": "1px",
+                "cornerRadius": "4px",
+                "spacing": "sm",
+                "borderColor": "#ffffff",
+                "margin": "xxl",
+                "height": "40px"
               }
             ],
             "position": "absolute",
-            "cornerRadius": "20px",
-            "offsetTop": "18px",
-            "backgroundColor": "#ff334b",
-            "offsetStart": "18px",
-            "height": "25px",
-            "width": "53px"
+            "offsetBottom": "0px",
+            "offsetStart": "0px",
+            "offsetEnd": "0px",
+            "backgroundColor": "#6E78F7",
+            "paddingAll": "20px",
+            "paddingTop": "18px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536123/4_zl2wfj.png",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:3",
+            "gravity": "top"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "filler"
+                      },
+                      {
+                        "type": "icon",
+                        "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536003/Vector_eh08dk.png"
+                      },
+                      {
+                        "type": "text",
+                        "text": "Beritahu saya jika launching",
+                        "color": "#ffffff",
+                        "flex": 0,
+                        "offsetTop": "-2px"
+                      },
+                      {
+                        "type": "filler"
+                      }
+                    ],
+                    "spacing": "sm"
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "borderWidth": "1px",
+                "cornerRadius": "4px",
+                "spacing": "sm",
+                "borderColor": "#ffffff",
+                "margin": "xxl",
+                "height": "40px"
+              }
+            ],
+            "position": "absolute",
+            "offsetBottom": "0px",
+            "offsetStart": "0px",
+            "offsetEnd": "0px",
+            "backgroundColor": "#6E78F7",
+            "paddingAll": "20px",
+            "paddingTop": "18px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536125/5_kgmx9u.png",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:3",
+            "gravity": "top"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "filler"
+                      },
+                      {
+                        "type": "icon",
+                        "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536003/Vector_eh08dk.png"
+                      },
+                      {
+                        "type": "text",
+                        "text": "Beritahu saya jika launching",
+                        "color": "#ffffff",
+                        "flex": 0,
+                        "offsetTop": "-2px"
+                      },
+                      {
+                        "type": "filler"
+                      }
+                    ],
+                    "spacing": "sm"
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "borderWidth": "1px",
+                "cornerRadius": "4px",
+                "spacing": "sm",
+                "borderColor": "#ffffff",
+                "margin": "xxl",
+                "height": "40px"
+              }
+            ],
+            "position": "absolute",
+            "offsetBottom": "0px",
+            "offsetStart": "0px",
+            "offsetEnd": "0px",
+            "backgroundColor": "#6E78F7",
+            "paddingAll": "20px",
+            "paddingTop": "18px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536134/6_w8ki5f.png",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:3",
+            "gravity": "top"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "filler"
+                      },
+                      {
+                        "type": "icon",
+                        "url": "https://res.cloudinary.com/dzrwauiut/image/upload/v1581536003/Vector_eh08dk.png"
+                      },
+                      {
+                        "type": "text",
+                        "text": "Beritahu saya jika launching",
+                        "color": "#ffffff",
+                        "flex": 0,
+                        "offsetTop": "-2px"
+                      },
+                      {
+                        "type": "filler"
+                      }
+                    ],
+                    "spacing": "sm"
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "borderWidth": "1px",
+                "cornerRadius": "4px",
+                "spacing": "sm",
+                "borderColor": "#ffffff",
+                "margin": "xxl",
+                "height": "40px"
+              }
+            ],
+            "position": "absolute",
+            "offsetBottom": "0px",
+            "offsetStart": "0px",
+            "offsetEnd": "0px",
+            "backgroundColor": "#6E78F7",
+            "paddingAll": "20px",
+            "paddingTop": "18px"
           }
         ],
         "paddingAll": "0px"
@@ -323,6 +509,8 @@ const onboard = {
     }
   ]
 }
+}
+
 // callback function to handle a single event
 function handleEvent(event) {
   if (event.replyToken && event.replyToken.match(/^(.)\1*$/)) {
