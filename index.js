@@ -533,7 +533,10 @@ function handleEvent(event) {
       }
 
     case 'follow':
-      return client.replyMessage(event.replyToken, onboard);
+      return client.replyMessage(event.replyToken, {
+        "type": "text",
+        "text": "\uDBC0\uDC84 LINE emoji"
+    });
 
     case 'unfollow':
       return console.log(`Unfollowed this bot: ${JSON.stringify(event)}`);
