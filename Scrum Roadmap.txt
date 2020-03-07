@@ -9,6 +9,9 @@ Aplikasi : EZapp merupakan aplikasi yang memudahkanmu untuk mencari bantuan apap
 
 Scrum Master : Dimas Nashiruddin Al Faruq
 
+
+Link Sprint Lengkap JIRA : https://ezapp.atlassian.net/secure/RapidBoard.jspa?rapidView=3&projectKey=RPL&selectedIssue=RPL-71&atlOrigin=eyJpIjoiNWRlYTUwNGFiOTk1NDIwNWEyMzdiMWY2NTc2ZjU2MzEiLCJwIjoiaiJ9
+
 Sprint 1
 product backlog
 -sebagai calon user dapat registrasi
