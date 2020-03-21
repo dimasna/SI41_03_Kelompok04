@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "903640524524",
+    "firebase_url": "https://ezapp-31fb9.firebaseio.com",
+    "project_id": "ezapp-31fb9",
+    "storage_bucket": "ezapp-31fb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903640524524:android:6abb8adad583f2ce7f67c9",
+        "android_client_info": {
+          "package_name": "tech.ezapp.ezadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "903640524524-e32q9fka0a1edi79of20g3el90iq0tgt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYw5vg7vXgRb-YOaHrA0LfvhzU2YNnVmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903640524524-e32q9fka0a1edi79of20g3el90iq0tgt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
