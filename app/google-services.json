@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "903640524524",
-    "firebase_url": "https://ezapp-31fb9.firebaseio.com",
-    "project_id": "ezapp-31fb9",
-    "storage_bucket": "ezapp-31fb9.appspot.com"
+    "project_number": "550444357543",
+    "firebase_url": "https://ezapp-18807.firebaseio.com",
+    "project_id": "ezapp-18807",
+    "storage_bucket": "ezapp-18807.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:903640524524:android:6abb8adad583f2ce7f67c9",
+        "mobilesdk_app_id": "1:550444357543:android:58c9497b543a27d0ec8882",
         "android_client_info": {
           "package_name": "tech.ezapp.ezadmin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "903640524524-e32q9fka0a1edi79of20g3el90iq0tgt.apps.googleusercontent.com",
+          "client_id": "550444357543-l5nr4701u40ga8rib4lmtqrebitcfejr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tech.ezapp.ezadmin",
+            "certificate_hash": "4e70ed604c4d215f29ae47ba5ab1a55a25996bac"
+          }
+        },
+        {
+          "client_id": "550444357543-o6vvgn5rgaqa9ejmvm0c05t0s7vak0s6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDYw5vg7vXgRb-YOaHrA0LfvhzU2YNnVmU"
+          "current_key": "AIzaSyDG_6QmxJl8UDUQB-21DVNpCZBM-5g26PQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "903640524524-e32q9fka0a1edi79of20g3el90iq0tgt.apps.googleusercontent.com",
+              "client_id": "550444357543-o6vvgn5rgaqa9ejmvm0c05t0s7vak0s6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
