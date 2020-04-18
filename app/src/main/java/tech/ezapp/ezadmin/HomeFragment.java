@@ -1,6 +1,7 @@
 package tech.ezapp.ezadmin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -10,7 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -23,7 +26,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,6 +37,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Button btnLgout;
 
     private OnFragmentInteractionListener mListener;
 
@@ -67,6 +71,7 @@ public class HomeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
         loadFragment(new PostFragment());
     }
 
@@ -90,8 +95,11 @@ public class HomeFragment extends Fragment {
         String email = activity.getEmail();
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        nama = (TextView) view.findViewById(R.id.nama);
+        nama = view.findViewById(R.id.nama);
         nama.setText(email);
+
+        btnLgout = view.findViewById(R.id.btn_logout);
+        btnLgout.setOnClickListener(this);
 
         return view;
     }
@@ -118,6 +126,19 @@ public class HomeFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
