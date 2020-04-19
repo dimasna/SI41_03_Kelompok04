@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.fl_container, fragment)
+                    .replace(R.id.post_container, fragment)
                     .commit();
             return true;
         }

@@ -60,7 +60,20 @@ public class BalanceTab extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        loadFragment(new DetailSaldoFragment());
     }
+
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.balance_container, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

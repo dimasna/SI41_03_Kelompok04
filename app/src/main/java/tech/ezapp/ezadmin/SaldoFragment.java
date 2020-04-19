@@ -36,7 +36,7 @@ public class SaldoFragment extends Fragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
 
-    private TabLayout saldoTab;
+    private TabItem balTab, reqTab;
 
     public SaldoFragment() {
         // Required empty public constructor
@@ -88,15 +88,6 @@ public class SaldoFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_saldo, container, false);
 
-        saldoTab = view.findViewById(R.id.tabLayout);
-
-        saldoTab.addOnTabSelectedListener(new OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch(tab.getPosition()) {
-                    case 0:
-                }
-            }
         return view;
     }
 
@@ -128,10 +119,9 @@ public class SaldoFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.balTab:
-                loadFragment(new BalanceTab());
-                break;
-            case R.id.reqTab:
-                loadFragment(new RequestTab());
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

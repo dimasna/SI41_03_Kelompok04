@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import tech.ezapp.ezadmin.dummy.DummyContent;
 
 
-public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener,PostFragment.OnListFragmentInteractionListener,AnalisisFragment.OnFragmentInteractionListener,TransaksiFragment.OnFragmentInteractionListener,AkunFragment.OnFragmentInteractionListener {
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener,PostFragment.OnListFragmentInteractionListener,AnalisisFragment.OnFragmentInteractionListener,TransaksiFragment.OnFragmentInteractionListener,SaldoFragment.OnFragmentInteractionListener, BalanceTab.OnFragmentInteractionListener, DetailSaldoFragment.OnListFragmentInteractionListener, RequestTab.OnFragmentInteractionListener ,AkunFragment.OnFragmentInteractionListener {
 
     private FirebaseAuth mAuth;
     String email = "null";

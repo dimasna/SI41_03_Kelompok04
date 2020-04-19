@@ -66,8 +66,8 @@ public class MyDetailSaldoRecyclerViewAdapter extends RecyclerView.Adapter<MyDet
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = (TextView) view.findViewById(R.id.jenis);
+            mContentView = (TextView) view.findViewById(R.id.nominal);
         }
 
         @Override
