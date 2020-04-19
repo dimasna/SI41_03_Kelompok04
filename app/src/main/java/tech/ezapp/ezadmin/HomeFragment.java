@@ -7,15 +7,12 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 /**
@@ -78,7 +75,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.post_container, fragment)
+                    .replace(R.id.fl_container, fragment)
                     .commit();
             return true;
         }
