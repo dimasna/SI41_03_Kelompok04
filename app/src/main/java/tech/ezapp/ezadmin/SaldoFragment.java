@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -67,26 +67,23 @@ public class SaldoFragment extends Fragment implements View.OnClickListener {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        loadFragment(new BalanceTab());
-
     }
 
-    private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.saldo_container, fragment)
-                    .commit();
-            return true;
-        }
-        return false;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_saldo, container, false);
+
+        CardView btnUserTaskDetail = view.findViewById(R.id.CardUsersTask);
+        btnUserTaskDetail.setOnClickListener(this);
+
+        CardView btnUserCoinDetail = view.findViewById(R.id.CardUsersCoin);
+        btnUserCoinDetail.setOnClickListener(this);
+
+        CardView btnUserTaxDetail = view.findViewById(R.id.CardTaxRate);
+        btnUserTaxDetail.setOnClickListener(this);
 
         return view;
     }
@@ -118,10 +115,17 @@ public class SaldoFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.balTab:
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+            case R.id.CardUsersTask:
+                Intent userTaskIntent = new Intent(getActivity(), UserTaskListActivity.class);
+                startActivity(userTaskIntent);
+                break;
+            case R.id.CardUsersCoin:
+                Intent userCoinIntent = new Intent(getActivity(), UserCoinListActivity.class);
+                startActivity(userCoinIntent);
+                break;
+            case R.id.CardTaxRate:
+                Intent userTaxRIntent = new Intent(getActivity(), UserTaxRListActivity.class);
+                startActivity(userTaxRIntent);
                 break;
             default:
                 break;
