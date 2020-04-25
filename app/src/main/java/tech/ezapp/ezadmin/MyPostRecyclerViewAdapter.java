@@ -1,12 +1,26 @@
 package tech.ezapp.ezadmin;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
+import tech.ezapp.ezadmin.Model.Post;
 import tech.ezapp.ezadmin.PostFragment.OnListFragmentInteractionListener;
 import tech.ezapp.ezadmin.dummy.DummyContent.DummyItem;
 
@@ -17,62 +31,91 @@ import java.util.List;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecyclerViewAdapter.ViewHolder> {
+public class MyPostRecyclerViewAdapter extends FirestoreRecyclerAdapter<Post, MyPostRecyclerViewAdapter.PostViewHolder> {
 
-    private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
-
-    public MyPostRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
-        mListener = listener;
+    public MyPostRecyclerViewAdapter(@NonNull FirestoreRecyclerOptions<Post> options) {
+        super(options);
     }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_post, parent, false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
-
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return mValues.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
-
-        public ViewHolder(View view) {
-            super(view);
-            mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
-        }
 
         @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+        protected void onBindViewHolder(@NonNull final PostViewHolder holder, int position, @NonNull Post model) {
+        final String judul = model.getJudul();
+            final String deskripsi = model.getDeskripsi();
+            long millis = model.getTimestamp().getSeconds() - System.currentTimeMillis();
+            long hours =  millis/(1000*60*60);
+            long min = (millis/(1000*60))%60;
+            final String diff = hours+":"+min;
+            final String poster = model.getPoster();
+            final String requirement = model.getRequirement();
+            final String status = model.getStatus();
+
+            final String id = getSnapshots().getSnapshot(position).getId();
+
+
+
+
+            holder.tvJudul.setText(judul);
+            holder.tvDeskripsi.setText(deskripsi);
+            holder.tvWaktu.setText(diff);
+            holder.cardPost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent postDetailIntent = new Intent(v.getContext(), PostDetail.class);
+                    postDetailIntent.putExtra("judul", judul);
+                    postDetailIntent.putExtra("deskripsi", deskripsi);
+                    postDetailIntent.putExtra("waktu", diff);
+                    postDetailIntent.putExtra("poster", poster);
+                    postDetailIntent.putExtra("requirement", requirement);
+                    postDetailIntent.putExtra("status", status);
+                    postDetailIntent.putExtra("docId", id);
+
+
+                    v.getContext().startActivity(postDetailIntent);
+                }
+            });
+
+
         }
-    }
-}
+
+
+        @NonNull
+        @Override
+        public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_post,parent,false);
+            return new PostViewHolder(view);
+        }
+        class PostViewHolder extends RecyclerView.ViewHolder{
+            TextView tvJudul;
+            TextView tvDeskripsi;
+            TextView tvWaktu;
+            CardView cardPost;
+            ProgressBar progressBar;
+
+            public PostViewHolder(@NonNull View itemView) {
+                super(itemView);
+                tvJudul = itemView.findViewById(R.id.item_number);
+                tvDeskripsi = itemView.findViewById(R.id.content);
+                tvWaktu = itemView.findViewById(R.id.waktu);
+                cardPost = itemView.findViewById(R.id.cardPost);
+                progressBar = itemView.findViewById(R.id.progressBar);
+            }
+//            void setJudul(String judul){
+//                TextView mIdView = mView.findViewById(R.id.item_number);
+//                mIdView.setText(judul);
+//            }
+//            void setDeskripsi(String deskripsi){
+//                TextView mContentView = mView.findViewById(R.id.content);
+//                mContentView.setText(deskripsi);
+//            }
+//            void setWaktu(Timestamp timestamp){
+//                TextView mWaktu = mView.findViewById(R.id.waktu);
+
+
+
+//              long now = System.currentTimeInMillis();
+//               CharSequence durasi = DateUtils.getRelativeTimeSpanString(timestamp,now,DateUtils.SECOND_IN_MILLIS,DateUtils.FORMAT_ABBREV_RELATIVE);
+               //mWaktu.setText(timestamp.toDate().toString());
+            }
+        }
+
+
