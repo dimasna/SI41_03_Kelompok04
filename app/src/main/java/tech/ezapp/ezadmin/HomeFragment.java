@@ -107,12 +107,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         nama = view.findViewById(R.id.nama);
         nama.setText(pref.getString("email",""));
 
-        btnLgout = view.findViewById(R.id.btn_logout);
+
         btnSearch = view.findViewById(R.id.btnSearch);
         ImageView btnNotif = view.findViewById(R.id.notif);
         btnSearch.setOnClickListener(this);
         btnNotif.setOnClickListener(this);
-        btnLgout.setOnClickListener(this);
+
 
         recyclerView = view.findViewById(R.id.list2);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
@@ -175,18 +175,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_logout:
-                FirebaseAuth.getInstance().signOut();
-                SharedPreferences sharedPreferences
-                        = this.getActivity().getSharedPreferences("akun",
-                        Context.MODE_PRIVATE);
-                SharedPreferences.Editor myEdit
-                        = sharedPreferences.edit();
-                myEdit.putBoolean("is_logged_before",false);
-                myEdit.commit();
-                Intent logout = new Intent(getActivity(), LoginActivity.class);
-                startActivity(logout);
-                break;
             case R.id.notif:
                 FirebaseAuth.getInstance().signOut();
                 Intent notif = new Intent(getActivity(), NotificationActivity.class);
