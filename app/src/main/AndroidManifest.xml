@@ -9,10 +9,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".detail_taskSelesai" />
         <activity android:name=".detail_taskDibatalkan" />
         <activity android:name=".detail_taskBerjalan" />
         <activity android:name=".SaldoActivity" />
+=======
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".NotificationActivity" />
+        <activity android:name=".RevisiActivity" />
+        <activity
+            android:name=".PostDetail"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        <activity android:name=".SaldoActivity" />
+        <activity android:name=".UbahSandi" />
+        <activity android:name=".NamaUbah" />
+        <activity android:name=".UserTaxRListActivity"></activity>
+        <activity android:name=".UserCoinListActivity" />
+        <activity android:name=".UserTaskListActivity" />
+        <activity android:name=".TransaksiTopUpGagal"></activity>
+        <activity android:name=".TransaksiTopUpSukses" />
+        <activity android:name=".TransaksiKonfirmasiTopUp" />
+        <activity android:name=".TransaksiTopUpPending" />
+        <activity android:name=".TransaksiDetailTopUp" />
+>>>>>>> 6ee2cdedc6577e5ad76ab97593f97b3ba67be61d
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashScreenActivity"
@@ -26,6 +50,10 @@
         <activity
             android:name=".HomeActivity"
             android:exported="true" />
+<<<<<<< HEAD
+=======
+        <activity android:name=".UbahBahasa" />
+>>>>>>> 6ee2cdedc6577e5ad76ab97593f97b3ba67be61d
     </application>
 
 </manifest>

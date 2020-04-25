@@ -1,15 +1,26 @@
 <resources>
     <string name="app_name">EZadmin</string>
+
+
     <string name="ezadmin">ezadmin</string>
-    <string name="login">Login</string>
-    <string name="password">Password</string>
+    <string name="login">Masuk</string>
+    <string name="password">Sandi</string>
     <string name="email">Email</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+<<<<<<< HEAD
     <string name="task">Task</string>
     <string name="bid">BID</string>
     <string name="nama">Nama</string>
     <string name="admin">Admin</string>
     <string name="logout">Logout</string>
+=======
+    <string name="statusKirimBerhasil">berhasil mengirimkan pesan</string>
+    <string name="statusKirimGagal">Gagal Mengirim Pesan</string>
+    <string name="statusHapusBerhasil">berhasil menghapus</string>
+    <string name="statusHapusGagal">gagal menghapus</string>
+    <string name="statusKonfirmasiBerhasil">berhasil mengkonfirmasi</string>
+    <string name="statusKonfirmasiGagal">gagal mengkonfirmasi</string>
+>>>>>>> 6ee2cdedc6577e5ad76ab97593f97b3ba67be61d
 </resources>

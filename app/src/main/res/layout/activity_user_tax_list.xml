@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserTaskListActivity"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/header_d_taxes_rate"
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="16dp">
+
+            <ImageView
+                android:id="@+id/headerTaxesRateIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/backspace" />
+
+            <TextView
+                android:id="@+id/headerTaxesRateText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:text="Detail Taxes Rate"
+                android:textAlignment="textStart"
+                android:textColor="#070101"
+                android:textSize="20dp"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="24dp"
+        android:textAlignment="center">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sub_total_ptcoins"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="4dp"
+            app:cardCornerRadius="6dp"
+            app:contentPadding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_total_ptcoins"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total Posting Tax"
+                    android:textAlignment="center"
+                    android:textColor="#9E9696"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/isi_total_ptcoins"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="4000"
+                    android:textAlignment="center"
+                    android:textColor="#8871F3"
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/footer_satuan_ptcoins"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Coins"
+                    android:textAlignment="center"
+                    android:textColor="#9E9696"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sub_total_ctcoins"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="20dp"
+            android:padding="24dp"
+            app:cardCornerRadius="6dp"
+            app:contentPadding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title_total_ctcoins"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total Coins Tax"
+                    android:textAlignment="center"
+                    android:textColor="#9E9696"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/isi_total_ctcoins"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="16000"
+                    android:textAlignment="center"
+                    android:textColor="#8871F3"
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/footer_satuan_ctcoins"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Coins"
+                    android:textAlignment="center"
+                    android:textColor="#9E9696"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="24dp"
+        android:text="Taxes"
+        android:textColor="#9F000000"
+        android:textSize="16dp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <FrameLayout
+        android:id="@+id/tax_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

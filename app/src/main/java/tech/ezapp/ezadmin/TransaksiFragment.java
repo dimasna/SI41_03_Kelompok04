@@ -1,14 +1,17 @@
 package tech.ezapp.ezadmin;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 
 /**
@@ -66,7 +69,20 @@ public class TransaksiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_transaksi, container, false);
+        View view = inflater.inflate(R.layout.fragment_transaksi, container, false);
+
+        CardView tp = view.findViewById(R.id.cardView5);
+        SharedPreferences pref = this.getActivity().getSharedPreferences("akun", Context.MODE_PRIVATE);
+        TextView nama = view.findViewById(R.id.nama);
+        nama.setText(pref.getString("email", ""));
+        tp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), TransaksiDetailTopUp.class);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

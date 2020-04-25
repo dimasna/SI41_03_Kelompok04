@@ -7,7 +7,7 @@
     tools:context=".SaldoActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cardLayout"
         android:layout_width="match_parent"
         android:layout_height="152dp"
         android:background="#FFFFFF"
@@ -22,7 +22,7 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
+                android:id="@+id/colorStatus"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="24dp"
@@ -76,8 +76,8 @@
                 android:text="Dummy"
                 android:textColor="#222222"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/cardView2"
-                app:layout_constraintTop_toTopOf="@+id/cardView2" />
+                app:layout_constraintStart_toEndOf="@+id/colorStatus"
+                app:layout_constraintTop_toTopOf="@+id/colorStatus" />
 
             <TextView
                 android:id="@+id/role"
