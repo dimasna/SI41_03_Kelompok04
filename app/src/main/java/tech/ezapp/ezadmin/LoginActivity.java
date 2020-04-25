@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText mEmailField;
     private EditText mPasswordField;
     private static final String TAG = "EmailPassword";
-
+    FirebaseUser currentUser;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void signIn(String email, String password) {
+    private void signIn(final String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
             return;
@@ -65,7 +66,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+                            currentUser = mAuth.getCurrentUser();
+
                             Log.d(TAG, "signInWithEmail:success");
+                            SharedPreferences sharedPreferences
+                                    = getSharedPreferences("akun",
+                                    MODE_PRIVATE);
+                            SharedPreferences.Editor myEdit
+                                    = sharedPreferences.edit();
+                            myEdit.putString("email",
+                                    email);
+                            myEdit.putString("userId",
+                                    currentUser.getUid());
+                            myEdit.putBoolean("is_logged_before",true);
+                            myEdit.commit();
                             Intent home = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(home);
                             finish();

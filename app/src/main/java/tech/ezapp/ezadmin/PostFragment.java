@@ -3,19 +3,29 @@ package tech.ezapp.ezadmin;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
+import tech.ezapp.ezadmin.Model.Post;
 import tech.ezapp.ezadmin.dummy.DummyContent;
 import tech.ezapp.ezadmin.dummy.DummyContent.DummyItem;
 
-import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -29,7 +39,16 @@ public class PostFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
+
     private OnListFragmentInteractionListener mListener;
+    private MyPostRecyclerViewAdapter adapter;
+    private RecyclerView recyclerView;
+
+    private static final FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+    private static final Query query = rootRef.collection("draftPosts")
+            .orderBy("timestamp", Query.Direction.ASCENDING);
+
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -62,18 +81,41 @@ public class PostFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_post_list, container, false);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyPostRecyclerViewAdapter(DummyContent.ITEMS, mListener));
-        }
+
+
+        recyclerView = view.findViewById(R.id.list2);
+        LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+        recyclerView.setLayoutManager(llm);
         return view;
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
+                .setQuery(query, Post.class)
+                .build();
+        adapter = new MyPostRecyclerViewAdapter(options);
+
+
+
+
+        recyclerView.setAdapter(adapter);
+adapter.startListening();
+
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+            adapter.stopListening();
+
+
     }
 
 
@@ -106,6 +148,8 @@ public class PostFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Post item);
     }
+
 }
+

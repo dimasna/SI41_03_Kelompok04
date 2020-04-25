@@ -2,17 +2,26 @@ package tech.ezapp.ezadmin;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
+import tech.ezapp.ezadmin.Model.Post;
 
 
 /**
@@ -30,11 +39,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM2 = "param2";
 
     TextView nama;
+    private MyPostRecyclerViewAdapter adapter;
+    private RecyclerView recyclerView;
+
+    private static final FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+    private static final Query query = rootRef.collection("draftPosts")
+            .orderBy("timestamp", Query.Direction.ASCENDING);
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Button btnLgout;
+    Button btnLgout,btnSearch;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,38 +86,64 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
 
 
-        loadFragment(new PostFragment());
     }
 
-    private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.post_container, fragment)
-                    .commit();
-            return true;
-        }
-        return false;
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        HomeActivity activity = (HomeActivity) getActivity();
+        //HomeActivity activity = (HomeActivity) getActivity();
 
-        String email = activity.getEmail();
-
+        //String email = activity.getEmail();
+        SharedPreferences pref = this.getActivity().getSharedPreferences("akun", Context.MODE_PRIVATE);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         nama = view.findViewById(R.id.nama);
-        nama.setText(email);
+        nama.setText(pref.getString("email",""));
 
-        btnLgout = view.findViewById(R.id.btn_logout);
-        btnLgout.setOnClickListener(this);
+
+        btnSearch = view.findViewById(R.id.btnSearch);
+        ImageView btnNotif = view.findViewById(R.id.notif);
+        btnSearch.setOnClickListener(this);
+        btnNotif.setOnClickListener(this);
+
+
+        recyclerView = view.findViewById(R.id.list2);
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+        recyclerView.setLayoutManager(llm);
+
 
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
+                .setQuery(query, Post.class)
+                .build();
+        adapter = new MyPostRecyclerViewAdapter(options);
+
+
+
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+
+
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        adapter.stopListening();
+
+
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -128,10 +171,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_logout:
+            case R.id.notif:
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+                Intent notif = new Intent(getActivity(), NotificationActivity.class);
+                startActivity(notif);
+                break;
+            case R.id.btnSearch:
+                Intent search = new Intent(getActivity(), SearchActivity.class);
+                startActivity(search);
                 break;
             default:
                 break;

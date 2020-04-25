@@ -1,55 +1,63 @@
 package tech.ezapp.ezadmin;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
+import tech.ezapp.ezadmin.Model.Post;
 import tech.ezapp.ezadmin.dummy.DummyContent;
 
 
-public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener,PostFragment.OnListFragmentInteractionListener,AnalisisFragment.OnFragmentInteractionListener,TransaksiFragment.OnFragmentInteractionListener,SaldoFragment.OnFragmentInteractionListener, BalanceTab.OnFragmentInteractionListener, DetailSaldoFragment.OnListFragmentInteractionListener, RequestTab.OnFragmentInteractionListener ,AkunFragment.OnFragmentInteractionListener {
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PostFragment.OnListFragmentInteractionListener, AnalisisFragment.OnFragmentInteractionListener, TransaksiFragment.OnFragmentInteractionListener, SaldoFragment.OnFragmentInteractionListener, BalanceTab.OnFragmentInteractionListener, DetailSaldoFragment.OnListFragmentInteractionListener, RequestTab.OnFragmentInteractionListener, AkunFragment.OnFragmentInteractionListener {
 
-    private FirebaseAuth mAuth;
-    String email = "null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        mAuth = FirebaseAuth.getInstance();
+        SharedPreferences mPrefs = getSharedPreferences("akun", MODE_PRIVATE);
+        if (mPrefs.getBoolean("is_logged_before",false)) {
+            loadFragment(new HomeFragment());
+            BottomNavigationView bv = findViewById(R.id.nav_view);
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-
-
-        if(currentUser == null){
+            bv.setOnNavigationItemSelectedListener(this);
+        } else {
+            // continue to login part
             Intent login = new Intent(HomeActivity.this, LoginActivity.class);
             startActivity(login);
             finish();
-        }else{
-            email = currentUser.getEmail();
         }
 
 
 
 
-        loadFragment(new HomeFragment());
-        BottomNavigationView bv = findViewById(R.id.nav_view);
+//
+//        if(currentUser == null){
+//            Intent login = new Intent(HomeActivity.this, LoginActivity.class);
+//            startActivity(login);
+//            finish();
+//        }else{
+//            email = currentUser.getEmail();
+//        }
 
-        bv.setOnNavigationItemSelectedListener(this);
+
+
+
+
     }
+
+
+
+
 
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
@@ -88,9 +96,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         return loadFragment(fragment);
     }
 
-    public String getEmail(){
-        return email;
-    }
+
 
 
 
@@ -103,6 +109,11 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    public void onListFragmentInteraction(Post item) {
 
     }
 

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import tech.ezapp.ezadmin.dummy.DummyContent;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 public class UserCoinListActivity extends AppCompatActivity implements DetailUserCoinFragment.OnListFragmentInteractionListener{
 
@@ -14,6 +16,15 @@ public class UserCoinListActivity extends AppCompatActivity implements DetailUse
         setContentView(R.layout.activity_user_coin_list);
 
         loadFragment(new DetailUserCoinFragment());
+
+        ImageView toolbar = findViewById(R.id.headerBackIcon);
+
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private boolean loadFragment(Fragment fragment) {

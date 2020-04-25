@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".HomeActivity">
 
-        <FrameLayout
-            android:id="@+id/post_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+            android:id="@+id/cardLayout"
             android:layout_width="match_parent"
             android:layout_height="152dp"
             android:background="#FFFFFF"
@@ -36,7 +27,7 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView2"
+                    android:id="@+id/colorStatus"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="24dp"
@@ -64,17 +55,18 @@
                     app:tabIndicatorColor="#6E78F7"
                     app:tabIndicatorHeight="4dp"
                     app:tabSelectedTextColor="#677AE5"
-                    app:tabTextColor="#222222">
+                    app:tabTextColor="#222222"
+                    >
 
                     <com.google.android.material.tabs.TabItem
                         android:id="@+id/taskTab"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Task" />
 
                     <com.google.android.material.tabs.TabItem
                         android:id="@+id/newsTab"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="News" />
 
@@ -90,8 +82,8 @@
                     android:text="Nama"
                     android:textColor="#222222"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@+id/cardView2"
-                    app:layout_constraintTop_toTopOf="@+id/cardView2" />
+                    app:layout_constraintStart_toEndOf="@+id/colorStatus"
+                    app:layout_constraintTop_toTopOf="@+id/colorStatus" />
 
                 <TextView
                     android:id="@+id/role"
@@ -103,24 +95,59 @@
                     app:layout_constraintStart_toStartOf="@+id/nama"
                     app:layout_constraintTop_toBottomOf="@+id/nama" />
 
-                <Button
-                    android:id="@+id/btn_logout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Logout"
+                <ImageView
+                    android:id="@+id/notif"
+                    android:layout_width="27dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/ic_notifications"
+                    app:layout_constraintBottom_toBottomOf="@+id/role"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.935"
-                    app:layout_constraintStart_toEndOf="@+id/cardView2"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/nama"
+                    app:layout_constraintTop_toTopOf="@+id/nama"
+                    app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/btnSearch"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="89dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="#3F51B5"
+        android:text="Search"
+        android:textColor="#FAFAFA"
+        android:textSize="12sp"
+        app:icon="@drawable/ic_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardLayout" />
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:overScrollMode="never"
+        android:paddingBottom="50dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/fragment_post" />
 
 
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>

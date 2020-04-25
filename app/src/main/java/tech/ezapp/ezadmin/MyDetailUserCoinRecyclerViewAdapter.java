@@ -2,6 +2,7 @@ package tech.ezapp.ezadmin;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,11 +44,8 @@ public class MyDetailUserCoinRecyclerViewAdapter extends RecyclerView.Adapter<My
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+                Intent userDetailIntent = new Intent(v.getContext(), DetailProfileUserCoin.class);
+                v.getContext().startActivity(userDetailIntent);
             }
         });
     }
@@ -66,8 +64,8 @@ public class MyDetailUserCoinRecyclerViewAdapter extends RecyclerView.Adapter<My
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.title);
-            mContentView = (TextView) view.findViewById(R.id.sub_title);
+            mIdView = (TextView) view.findViewById(R.id.user_coins);
+            mContentView = (TextView) view.findViewById(R.id.user_date);
         }
 
         @Override

@@ -66,8 +66,8 @@ public class MyDetailTaxRateRecyclerViewAdapter extends RecyclerView.Adapter<MyD
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.title);
-            mContentView = (TextView) view.findViewById(R.id.sub_title);
+            mIdView = (TextView) view.findViewById(R.id.tax_title);
+            mContentView = (TextView) view.findViewById(R.id.tax_title);
         }
 
         @Override

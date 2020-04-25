@@ -19,7 +19,7 @@
             android:paddingStart="16dp">
 
             <ImageView
-                android:id="@+id/headerUserTaskIcon"
+                android:id="@+id/headerBackIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/backspace" />
@@ -157,9 +157,15 @@
 
     </TextView>
 
-    <FrameLayout
-        android:id="@+id/task_container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:name="tech.ezapp.ezadmin.DetailUserTaskFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".DetailUserTaskFragment"
+        tools:listitem="@layout/fragment_detailusertask" />
 
 </LinearLayout>

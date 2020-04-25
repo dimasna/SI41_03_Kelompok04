@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:background="#FFFFFF"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/colorStatus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ava_background"
+                    tools:ignore="ContentDescription" />
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="#6E78F7"
+                app:tabIndicatorFullWidth="true"
+                app:tabIndicatorHeight="4dp"
+                app:tabMaxWidth="0dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="#677AE5"
+                app:tabTextColor="#222222">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/taskTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Task" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/newsTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="News" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <TextView
+                android:id="@+id/nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Nama"
+                android:textColor="#222222"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/colorStatus"
+                app:layout_constraintTop_toTopOf="@+id/colorStatus" />
+
+            <TextView
+                android:id="@+id/role"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="Admin"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="@+id/nama"
+                app:layout_constraintTop_toBottomOf="@+id/nama" />
+
+            <ImageView
+                android:id="@+id/notif"
+                android:layout_width="27dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/ic_notifications"
+                app:layout_constraintBottom_toBottomOf="@+id/role"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/nama"
+                app:layout_constraintTop_toTopOf="@+id/nama"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnSearch"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="89dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="#3F51B5"
+        android:text="Search"
+        android:textColor="#FAFAFA"
+        android:textSize="12sp"
+        app:icon="@drawable/ic_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardLayout" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:overScrollMode="never"
+        android:paddingBottom="50dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardLayout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/fragment_post" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
