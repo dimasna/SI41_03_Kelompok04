@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cardPost"
+    android:layout_marginBottom="15dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="6dp"
+    app:contentPaddingBottom="15dp"
+    app:contentPaddingRight="10dp"
+    app:contentPaddingTop="15dp">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/item_number"
+                android:layout_width="295dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:text="notif"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/colorStatus"
+                app:layout_constraintStart_toEndOf="@+id/colorStatus" />
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="294dp"
+                android:layout_height="20dp"
+                android:fontFamily="serif"
+                android:text="waktu"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:textSize="14sp"
+                android:typeface="serif"
+                app:layout_constraintStart_toStartOf="@+id/item_number"
+                app:layout_constraintTop_toBottomOf="@+id/item_number" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/colorStatus"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="#FF3737"
+                app:cardBackgroundColor="#FF3737"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="25dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/content"
+                app:layout_constraintTop_toTopOf="@+id/content"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ic_coin" />
+
+            <TextView
+                android:id="@+id/waktu"
+                android:layout_width="44dp"
+                android:layout_height="17dp"
+                android:layout_marginEnd="8dp"
+                android:text="time"
+                android:textAlignment="textEnd"
+                android:textSize="12sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/item_number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/item_number" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

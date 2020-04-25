@@ -1,0 +1,38 @@
+Anggota Kelompok :
+Adinda Inez Sang
+Dimas Nashiruddin Al Faruq
+Denny Fitriansyah Perdana
+Ghaist Hatta Mursyidal
+Wiwinda Juned Purba
+
+Aplikasi : EZapp merupakan aplikasi yang memudahkanmu untuk mencari bantuan apapun dengan budget berapapun.
+
+Scrum Master : Dimas Nashiruddin Al Faruq
+
+
+Link Sprint Lengkap JIRA : https://ezapp.atlassian.net/secure/RapidBoard.jspa?rapidView=3&projectKey=RPL&selectedIssue=RPL-71&atlOrigin=eyJpIjoiNWRlYTUwNGFiOTk1NDIwNWEyMzdiMWY2NTc2ZjU2MzEiLCJwIjoiaiJ9
+
+Sprint 1
+product backlog
+-sebagai calon user dapat registrasi
+-sebagai user dapat login
+-sebagai admin dapat login halaman admin
+
+deliverable : fitur registrasi, login
+
+Sprint 2
+product backlog
+- sebagai poster dapat membuat task
+- sebagai helper dapat membid task
+- sebagai admin dapat mengkonfirmasi task
+
+deliverable : fitur posting, fitur bid, fitur konfirmasi
+
+Sprint 3
+product backlog
+- sebagai admin dapat melihat status task yang berjalan
+...
+...
+
+deliverable : halaman dashboard
+
