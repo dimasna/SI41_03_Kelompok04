@@ -1,48 +1,37 @@
 package tech.ezapp.ezadmin;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toolbar;
-
-import com.google.android.material.tabs.TabItem;
-import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AnalisisFragment.OnFragmentInteractionListener} interface
+ * {@link bidTab.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AnalisisFragment#newInstance} factory method to
+ * Use the {@link bidTab#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AnalisisFragment extends Fragment implements View.OnClickListener {
+public class bidTab extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    TextView nama;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-
     private OnFragmentInteractionListener mListener;
-    private TabItem taskTab, bidTab;
 
-    public AnalisisFragment() {
+    public bidTab() {
         // Required empty public constructor
     }
 
@@ -52,11 +41,11 @@ public class AnalisisFragment extends Fragment implements View.OnClickListener {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AnalisisFragment.
+     * @return A new instance of fragment bidTab.
      */
     // TODO: Rename and change types and number of parameters
-    public static AnalisisFragment newInstance(String param1, String param2) {
-        AnalisisFragment fragment = new AnalisisFragment();
+    public static bidTab newInstance(String param1, String param2) {
+        bidTab fragment = new bidTab();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,44 +60,14 @@ public class AnalisisFragment extends Fragment implements View.OnClickListener {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-        loadFragment(new taskTab());
     }
-
-    private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.analisis_container, fragment)
-                    .commit();
-            return true;
-        }
-        return false;
-    }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        HomeActivity activity = (HomeActivity) getActivity();
-
-        String email = activity.getEmail();
-
-        View view = inflater.inflate(R.layout.fragment_analisis, container, false);
-
-        nama = view.findViewById(R.id.nama);
-        nama.setText(email);
-
-        taskTab = view.findViewById(R.id.tasksTab);
-        bidTab = view.findViewById(R.id.bidsTab);
-
-
-
-        return view;
+        return inflater.inflate(R.layout.fragment_bid_tab, container, false);
     }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -133,28 +92,6 @@ public class AnalisisFragment extends Fragment implements View.OnClickListener {
         super.onDetach();
         mListener = null;
     }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tasksTab:
-                loadFragment(new taskTab());
-                break;
-            case R.id.bidsTab:
-                loadFragment(new bidTab());
-                break;
-            case R.id.btn_logout:
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
-    }
-
-
-
 
     /**
      * This interface must be implemented by activities that contain this

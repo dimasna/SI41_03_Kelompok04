@@ -11,38 +11,32 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toolbar;
-
-import com.google.android.material.tabs.TabItem;
-import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AnalisisFragment.OnFragmentInteractionListener} interface
+ * {@link taskTab.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AnalisisFragment#newInstance} factory method to
+ * Use the {@link taskTab#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AnalisisFragment extends Fragment implements View.OnClickListener {
+public class taskTab extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    TextView nama;
     // TODO: Rename and change types of parameters
+
+    CardView taskDibatalkan, taskBerjalan, taskSelesai;
+
     private String mParam1;
     private String mParam2;
 
-
     private OnFragmentInteractionListener mListener;
-    private TabItem taskTab, bidTab;
 
-    public AnalisisFragment() {
+    public taskTab() {
         // Required empty public constructor
     }
 
@@ -52,11 +46,11 @@ public class AnalisisFragment extends Fragment implements View.OnClickListener {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AnalisisFragment.
+     * @return A new instance of fragment taskTab.
      */
     // TODO: Rename and change types and number of parameters
-    public static AnalisisFragment newInstance(String param1, String param2) {
-        AnalisisFragment fragment = new AnalisisFragment();
+    public static taskTab newInstance(String param1, String param2) {
+        taskTab fragment = new taskTab();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,39 +67,20 @@ public class AnalisisFragment extends Fragment implements View.OnClickListener {
         }
 
 
-        loadFragment(new taskTab());
     }
-
-    private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.analisis_container, fragment)
-                    .commit();
-            return true;
-        }
-        return false;
-    }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        HomeActivity activity = (HomeActivity) getActivity();
+        View view = inflater.inflate(R.layout.fragment_task_tab, container, false);
 
-        String email = activity.getEmail();
-
-        View view = inflater.inflate(R.layout.fragment_analisis, container, false);
-
-        nama = view.findViewById(R.id.nama);
-        nama.setText(email);
-
-        taskTab = view.findViewById(R.id.tasksTab);
-        bidTab = view.findViewById(R.id.bidsTab);
-
-
-
+        taskBerjalan = view.findViewById(R.id.taskBerjalan);
+        taskBerjalan.setOnClickListener(this);
+        taskDibatalkan = view.findViewById(R.id.taskBatal);
+        taskDibatalkan.setOnClickListener(this);
+        taskSelesai = view.findViewById(R.id.taskSelesai);
+        taskSelesai.setOnClickListener(this);
         return view;
     }
 
@@ -115,6 +90,7 @@ public class AnalisisFragment extends Fragment implements View.OnClickListener {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+
     }
 
     @Override
@@ -136,25 +112,24 @@ public class AnalisisFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tasksTab:
-                loadFragment(new taskTab());
+        switch (v.getId()){
+            case R.id.taskBerjalan:
+                Intent intent = new Intent(getActivity(), detail_taskBerjalan.class);
+                startActivity(intent);
                 break;
-            case R.id.bidsTab:
-                loadFragment(new bidTab());
+            case R.id.taskBatal:
+                Intent intent = new Intent(getActivity(), detail_taskDibatalkan.class);
+                startActivity(intent);
                 break;
-            case R.id.btn_logout:
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
+            case R.id.taskSelesai:
+                Intent intent = new Intent(getActivity(), detail_taskSelesai.class);
                 startActivity(intent);
                 break;
             default:
                 break;
         }
+
     }
-
-
-
 
     /**
      * This interface must be implemented by activities that contain this
