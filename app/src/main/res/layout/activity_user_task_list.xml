@@ -161,10 +161,13 @@
         android:id="@+id/list"
         android:name="tech.ezapp.ezadmin.DetailUserTaskFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        app:layoutManager="LinearLayoutManager"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:context=".DetailUserTaskFragment"
         tools:listitem="@layout/fragment_detailusertask" />
 

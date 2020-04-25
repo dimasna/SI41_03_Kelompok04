@@ -4,16 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import tech.ezapp.ezadmin.Model.Post;
 import tech.ezapp.ezadmin.Model.saldoPost;
 import tech.ezapp.ezadmin.dummy.DummyContent;
+
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 
 public class UserTaskListActivity extends AppCompatActivity implements DetailUserTaskFragment.OnListFragmentInteractionListener {
 
@@ -29,10 +34,7 @@ public class UserTaskListActivity extends AppCompatActivity implements DetailUse
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_task_list);
 
-//        loadFragment(new DetailUserTaskFragment());
-
         ImageView toolbar = findViewById(R.id.headerBackIcon);
-
         toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +49,7 @@ public class UserTaskListActivity extends AppCompatActivity implements DetailUse
         recyclerView.setLayoutManager(llm);
     }
 
+
     @Override
     public void onStart() {
         super.onStart();
@@ -56,28 +59,16 @@ public class UserTaskListActivity extends AppCompatActivity implements DetailUse
         adapter = new MyDetailUserTaskRecyclerViewAdapter(options);
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
+
     @Override
     public void onStop() {
         super.onStop();
         adapter.stopListening();
     }
 
-
-//    private boolean loadFragment(Fragment fragment) {
-//        if (fragment != null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.task_container, fragment)
-//                    .commit();
-//            return true;
-//        }
-//        return false;
-//    }
-
     @Override
-    public void onListFragmentInteraction(saldoPost item) {
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
 
     }
 }

@@ -12,6 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
+
+import tech.ezapp.ezadmin.Model.Post;
+import tech.ezapp.ezadmin.Model.saldoPost;
 import tech.ezapp.ezadmin.dummy.DummyContent;
 import tech.ezapp.ezadmin.dummy.DummyContent.DummyItem;
 
@@ -25,11 +39,17 @@ import java.util.List;
  */
 public class DetailUserTaskFragment extends Fragment {
 
+    private MyDetailUserTaskRecyclerViewAdapter adapter;
+    private RecyclerView recyclerView;
     // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
+   private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+
+    private static final FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+    private static final Query query = rootRef.collection("saldoPost")
+            .orderBy("timestamp", Query.Direction.ASCENDING);
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -65,17 +85,29 @@ public class DetailUserTaskFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detailusertask_list, container, false);
 
         // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyDetailUserTaskRecyclerViewAdapter(DummyContent.ITEMS, mListener));
-        }
+        recyclerView = view.findViewById(R.id.list);
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+        recyclerView.setLayoutManager(llm);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirestoreRecyclerOptions<saldoPost> options = new FirestoreRecyclerOptions.Builder<saldoPost>()
+                .setQuery(query, saldoPost.class)
+                .build();
+        adapter = new MyDetailUserTaskRecyclerViewAdapter(options);
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
 

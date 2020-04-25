@@ -31,14 +31,14 @@ import java.util.List;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyDetailUserTaskRecyclerViewAdapter extends FirestoreRecyclerAdapter<saldoPost, MyDetailUserTaskRecyclerViewAdapter.UserTaskViewHolder> {
+public class MyDetailUserTaskRecyclerViewAdapter extends FirestoreRecyclerAdapter<saldoPost, MyDetailUserTaskRecyclerViewAdapter.saldoPostHolder> {
 
     public MyDetailUserTaskRecyclerViewAdapter(@NonNull FirestoreRecyclerOptions<saldoPost> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull final UserTaskViewHolder holder, int position, @NonNull saldoPost model) {
+    protected void onBindViewHolder(@NonNull final saldoPostHolder holder, int position, @NonNull saldoPost model) {
 
 
        // final String id = getSnapshots().getSnapshot(position).getId();
@@ -52,17 +52,17 @@ public class MyDetailUserTaskRecyclerViewAdapter extends FirestoreRecyclerAdapte
 
     @NonNull
     @Override
-    public MyDetailUserTaskRecyclerViewAdapter.UserTaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyDetailUserTaskRecyclerViewAdapter.saldoPostHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_detailusertask,parent,false);
-        return new MyDetailUserTaskRecyclerViewAdapter.UserTaskViewHolder(view);
+        return new MyDetailUserTaskRecyclerViewAdapter.saldoPostHolder(view);
     }
-    class UserTaskViewHolder extends RecyclerView.ViewHolder {
+    class saldoPostHolder extends RecyclerView.ViewHolder {
         TextView tvPosting_desc;
         TextView tvPosting_user;
         TextView tvPosting_coins;
         TextView tvPosting_date;
 
-        public UserTaskViewHolder(@NonNull View itemView) {
+        public saldoPostHolder(@NonNull View itemView) {
             super(itemView);
             tvPosting_desc = itemView.findViewById(R.id.posting_desc);
             tvPosting_user = itemView.findViewById(R.id.posting_user);
