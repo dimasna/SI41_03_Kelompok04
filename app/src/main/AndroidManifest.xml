@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
         <activity android:name=".SearchActivity" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".RevisiActivity" />
@@ -22,10 +24,10 @@
         <activity android:name=".SaldoActivity" />
         <activity android:name=".UbahSandi" />
         <activity android:name=".NamaUbah" />
-        <activity android:name=".UserTaxRListActivity"></activity>
+        <activity android:name=".UserTaxRListActivity" />
         <activity android:name=".UserCoinListActivity" />
         <activity android:name=".UserTaskListActivity" />
-        <activity android:name=".TransaksiTopUpGagal"></activity>
+        <activity android:name=".TransaksiTopUpGagal" />
         <activity android:name=".TransaksiTopUpSukses" />
         <activity android:name=".TransaksiKonfirmasiTopUp" />
         <activity android:name=".TransaksiTopUpPending" />
@@ -44,6 +46,16 @@
             android:name=".HomeActivity"
             android:exported="true" />
         <activity android:name=".UbahBahasa" />
+
+        <service android:name=".FirebaseMessagingServiceNotification">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
     </application>
 
 </manifest>
