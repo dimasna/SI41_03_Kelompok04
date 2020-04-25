@@ -1,14 +1,20 @@
 package tech.ezapp.ezadmin;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
@@ -19,15 +25,19 @@ import android.view.ViewGroup;
  * Use the {@link AkunFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AkunFragment extends Fragment {
+public class AkunFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    TextView nama;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    Button btnKeluar;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,7 +76,28 @@ public class AkunFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_akun, container, false);
+        HomeActivity activity = (HomeActivity) getActivity();
+        SharedPreferences pref = this.getActivity().getSharedPreferences("akun", Context.MODE_PRIVATE);
+
+
+        View view = inflater.inflate(R.layout.fragment_akun, container, false);
+        nama = view.findViewById(R.id.nama);
+        nama.setText(pref.getString("email", ""));
+
+
+        btnKeluar = view.findViewById(R.id.btn_keluar);
+        btnKeluar.setOnClickListener(this);
+
+        CardView cardViewbahasa = view.findViewById(R.id.crdBahasaa);
+        cardViewbahasa.setOnClickListener(this);
+
+        CardView cardViewsandi = view.findViewById(R.id.crdSandi);
+        cardViewsandi.setOnClickListener(this);
+
+        TextView ubahNama = view.findViewById(R.id.ubahnaama);
+        ubahNama.setOnClickListener(this);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +122,31 @@ public class AkunFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_keluar:
+                FirebaseAuth.getInstance().signOut();
+                Intent pindah = new Intent(getActivity(), LoginActivity.class);
+                startActivity(pindah);
+                break;
+            case R.id.crdBahasaa:
+                Intent bahasa = new Intent(getActivity(), UbahBahasa.class);
+                startActivity(bahasa);
+                break;
+            case R.id.crdSandi:
+                Intent sandi = new Intent(getActivity(), UbahSandi.class);
+                startActivity(sandi);
+                break;
+            case R.id.ubahnaama:
+                Intent name = new Intent(getActivity(), NamaUbah.class);
+                startActivity(name);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
