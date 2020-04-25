@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".detail_taskSelesai"></activity>
+        <activity android:name=".detail_taskSelesai" />
         <activity android:name=".detail_taskDibatalkan" />
         <activity android:name=".detail_taskBerjalan" />
         <activity android:name=".SaldoActivity" />

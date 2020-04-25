@@ -29,7 +29,7 @@ public class taskTab extends Fragment implements View.OnClickListener{
 
     // TODO: Rename and change types of parameters
 
-    CardView taskDibatalkan, taskBerjalan, taskSelesai;
+    CardView taskBatal, taskBerjalan, taskSelesai;
 
     private String mParam1;
     private String mParam2;
@@ -77,8 +77,8 @@ public class taskTab extends Fragment implements View.OnClickListener{
 
         taskBerjalan = view.findViewById(R.id.taskBerjalan);
         taskBerjalan.setOnClickListener(this);
-        taskDibatalkan = view.findViewById(R.id.taskBatal);
-        taskDibatalkan.setOnClickListener(this);
+        taskBatal = view.findViewById(R.id.taskDibatalkan);
+        taskBatal.setOnClickListener(this);
         taskSelesai = view.findViewById(R.id.taskSelesai);
         taskSelesai.setOnClickListener(this);
         return view;
@@ -117,15 +117,13 @@ public class taskTab extends Fragment implements View.OnClickListener{
                 Intent intent = new Intent(getActivity(), detail_taskBerjalan.class);
                 startActivity(intent);
                 break;
-            case R.id.taskBatal:
-                Intent intent = new Intent(getActivity(), detail_taskDibatalkan.class);
-                startActivity(intent);
+            case R.id.taskDibatalkan:
+                Intent a = new Intent(getActivity(), detail_taskDibatalkan.class);
+                startActivity(a);
                 break;
             case R.id.taskSelesai:
-                Intent intent = new Intent(getActivity(), detail_taskSelesai.class);
-                startActivity(intent);
-                break;
-            default:
+                Intent b = new Intent(getActivity(), detail_taskSelesai.class);
+                startActivity(b);
                 break;
         }
 
