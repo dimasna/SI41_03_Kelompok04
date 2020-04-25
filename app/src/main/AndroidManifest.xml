@@ -22,6 +22,9 @@
         <activity android:name=".SaldoActivity" />
         <activity android:name=".UbahSandi" />
         <activity android:name=".NamaUbah" />
+        <activity android:name=".UserTaxRListActivity"></activity>
+        <activity android:name=".UserCoinListActivity" />
+        <activity android:name=".UserTaskListActivity" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashScreenActivity"

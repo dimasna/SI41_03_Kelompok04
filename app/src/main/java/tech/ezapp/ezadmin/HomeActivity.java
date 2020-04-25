@@ -1,26 +1,22 @@
 package tech.ezapp.ezadmin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import tech.ezapp.ezadmin.Model.Post;
 import tech.ezapp.ezadmin.dummy.DummyContent;
 
 
-public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener,PostFragment.OnListFragmentInteractionListener,AnalisisFragment.OnFragmentInteractionListener,TransaksiFragment.OnFragmentInteractionListener,SaldoFragment.OnFragmentInteractionListener,AkunFragment.OnFragmentInteractionListener {
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, PostFragment.OnListFragmentInteractionListener, AnalisisFragment.OnFragmentInteractionListener, TransaksiFragment.OnFragmentInteractionListener, SaldoFragment.OnFragmentInteractionListener, BalanceTab.OnFragmentInteractionListener, DetailSaldoFragment.OnListFragmentInteractionListener, RequestTab.OnFragmentInteractionListener, AkunFragment.OnFragmentInteractionListener {
 
 
     @Override
@@ -118,6 +114,11 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onListFragmentInteraction(Post item) {
+
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
 
     }
 }
