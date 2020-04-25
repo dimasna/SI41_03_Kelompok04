@@ -19,7 +19,7 @@
             android:paddingStart="16dp">
 
             <ImageView
-                android:id="@+id/headerUserCoinIcon"
+                android:id="@+id/headerBackIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/backspace" />
