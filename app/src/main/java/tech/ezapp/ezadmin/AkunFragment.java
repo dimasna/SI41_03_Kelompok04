@@ -38,6 +38,8 @@ public class AkunFragment extends Fragment implements View.OnClickListener {
     private String mParam2;
 
     Button btnKeluar;
+    TextView ubahNama;
+    CardView cardViewbahasa, cardViewsandi;
 
     private OnFragmentInteractionListener mListener;
 
@@ -88,13 +90,13 @@ public class AkunFragment extends Fragment implements View.OnClickListener {
         btnKeluar = view.findViewById(R.id.btn_keluar);
         btnKeluar.setOnClickListener(this);
 
-        CardView cardViewbahasa = view.findViewById(R.id.crdBahasaa);
+        cardViewbahasa = view.findViewById(R.id.crdBahasaa);
         cardViewbahasa.setOnClickListener(this);
 
-        CardView cardViewsandi = view.findViewById(R.id.crdSandi);
+        cardViewsandi = view.findViewById(R.id.crdSandi);
         cardViewsandi.setOnClickListener(this);
 
-        TextView ubahNama = view.findViewById(R.id.ubahnaama);
+        ubahNama = view.findViewById(R.id.ubahnaama);
         ubahNama.setOnClickListener(this);
 
         return view;

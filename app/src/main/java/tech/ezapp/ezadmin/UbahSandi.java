@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,19 +29,21 @@ public class UbahSandi extends AppCompatActivity {
 
         etNew = findViewById(R.id.newPas);
         etOld = findViewById(R.id.oldPass);
+
         btngantiPs = findViewById(R.id.btnUbahPass);
 
         btngantiPs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 final String etOldPass, etNewPass;
                 etNewPass = etNew.getText().toString();
                 etOldPass = etOld.getText().toString();
-                if (etOldPass.equals("")){
+                if (etOldPass.equals("")) {
                     Toast.makeText(UbahSandi.this, "Password6 is required", Toast.LENGTH_SHORT).show();
-                } else if (etNewPass.equals("")){
-                    Toast.makeText(UbahSandi.this, "Password is required", Toast.LENGTH_SHORT).show();
-                } else if (etNewPass.length() < 6 && etOldPass.length() < 6){
+                } else if (etNewPass.equals("")) {
+                    Toast.makeText(UbahSandi.this, "New Password is required", Toast.LENGTH_SHORT).show();
+                } else if (etNewPass.length() < 6 && etOldPass.length() < 6) {
                     Toast.makeText(UbahSandi.this, "Password too short", Toast.LENGTH_SHORT).show();
                 }
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -49,7 +52,7 @@ public class UbahSandi extends AppCompatActivity {
                 user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             user.updatePassword(etNewPass).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -57,7 +60,7 @@ public class UbahSandi extends AppCompatActivity {
                                         Toast.makeText(UbahSandi.this, "Password Changed", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(UbahSandi.this, "Password Not Changed", Toast.LENGTH_SHORT).show();
-                                    }
+                                }
                                 }
                             });
                         }
@@ -66,4 +69,5 @@ public class UbahSandi extends AppCompatActivity {
             }
         });
     }
+
 }
