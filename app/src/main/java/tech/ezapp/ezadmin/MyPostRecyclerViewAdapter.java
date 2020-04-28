@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +39,7 @@ public class MyPostRecyclerViewAdapter extends FirestoreRecyclerAdapter<Post, My
             final String poster = model.getPoster();
             final String requirement = model.getRequirement();
             final String status = model.getStatus();
+            final String harga = Long.toString(model.getHarga());
 
             final String id = getSnapshots().getSnapshot(position).getId();
 
@@ -48,7 +48,7 @@ public class MyPostRecyclerViewAdapter extends FirestoreRecyclerAdapter<Post, My
 
             holder.tvJudul.setText(judul);
             holder.tvDeskripsi.setText(deskripsi);
-            holder.tvWaktu.setText(diff);
+            holder.tvWaktu.setText(harga);
             holder.cardPost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -81,7 +81,7 @@ public class MyPostRecyclerViewAdapter extends FirestoreRecyclerAdapter<Post, My
             TextView tvDeskripsi;
             TextView tvWaktu;
             CardView cardPost;
-            ProgressBar progressBar;
+
 
             public PostViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -89,7 +89,7 @@ public class MyPostRecyclerViewAdapter extends FirestoreRecyclerAdapter<Post, My
                 tvDeskripsi = itemView.findViewById(R.id.content);
                 tvWaktu = itemView.findViewById(R.id.waktu);
                 cardPost = itemView.findViewById(R.id.cardPost);
-                progressBar = itemView.findViewById(R.id.progressBar);
+
             }
 //            void setJudul(String judul){
 //                TextView mIdView = mView.findViewById(R.id.item_number);

@@ -1,7 +1,6 @@
 package tech.ezapp.ezadmin;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabItem;
-import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
@@ -137,11 +135,6 @@ public class AnalisisFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.bidsTab:
                 loadFragment(new bidTab());
-                break;
-            case R.id.btn_logout:
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
                 break;
             default:
                 break;

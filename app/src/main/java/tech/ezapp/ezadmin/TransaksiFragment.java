@@ -82,6 +82,39 @@ public class TransaksiFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        CardView totalTopUpbtn = view.findViewById(R.id.cardView5);
+        totalTopUpbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentTotalTopUp = new Intent(v.getContext(), TransaksiDetailTopUp.class);
+                startActivity(intentTotalTopUp);
+            }
+        });
+        CardView totalTopUpPendingbtn = view.findViewById(R.id.cardView6);
+        totalTopUpPendingbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentTotalTopUpPending = new Intent(v.getContext(), TransaksiTopUpPending.class);
+                startActivity(intentTotalTopUpPending);
+            }
+        });
+        CardView totalTopUpSuksesbtn = view.findViewById(R.id.cardView3);
+        totalTopUpSuksesbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent totalTopUpSuksesbtn = new Intent(v.getContext(), TransaksiTopUpSukses.class);
+                startActivity(totalTopUpSuksesbtn);
+            }
+        });
+        CardView totalTopUpGagalbtn = view.findViewById(R.id.cardView4);
+        totalTopUpGagalbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent totalTopUpGagalbtn = new Intent(v.getContext(), TransaksiTopUpGagal.class);
+                startActivity(totalTopUpGagalbtn);
+            }
+        });
         return view;
     }
 
