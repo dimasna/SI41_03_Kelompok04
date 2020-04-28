@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".detail_taskSelesai" />
+        <activity android:name=".detail_taskDibatalkan" />
+        <activity android:name=".detail_taskBerjalan" />
+        <activity android:name=".SaldoActivity" />
 
         <activity android:name=".SearchActivity" />
         <activity android:name=".NotificationActivity" />
@@ -21,7 +25,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
         </activity>
-        <activity android:name=".SaldoActivity" />
+
         <activity android:name=".UbahSandi" />
         <activity android:name=".NamaUbah" />
         <activity android:name=".UserTaxRListActivity" />

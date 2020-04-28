@@ -1,49 +1,36 @@
 package tech.ezapp.ezadmin;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AkunFragment.OnFragmentInteractionListener} interface
+ * {@link bidTab.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AkunFragment#newInstance} factory method to
+ * Use the {@link bidTab#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AkunFragment extends Fragment implements View.OnClickListener {
+public class bidTab extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    TextView nama;
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    Button btnKeluar;
-    TextView ubahNama;
-    CardView cardViewbahasa, cardViewsandi;
-
     private OnFragmentInteractionListener mListener;
 
-    public AkunFragment() {
+    public bidTab() {
         // Required empty public constructor
     }
 
@@ -53,11 +40,11 @@ public class AkunFragment extends Fragment implements View.OnClickListener {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AkunFragment.
+     * @return A new instance of fragment bidTab.
      */
     // TODO: Rename and change types and number of parameters
-    public static AkunFragment newInstance(String param1, String param2) {
-        AkunFragment fragment = new AkunFragment();
+    public static bidTab newInstance(String param1, String param2) {
+        bidTab fragment = new bidTab();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,28 +65,7 @@ public class AkunFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        HomeActivity activity = (HomeActivity) getActivity();
-        SharedPreferences pref = this.getActivity().getSharedPreferences("akun", Context.MODE_PRIVATE);
-
-
-        View view = inflater.inflate(R.layout.fragment_akun, container, false);
-        nama = view.findViewById(R.id.nama);
-        nama.setText(pref.getString("email", ""));
-
-
-        btnKeluar = view.findViewById(R.id.btn_keluar);
-        btnKeluar.setOnClickListener(this);
-
-        cardViewbahasa = view.findViewById(R.id.crdBahasaa);
-        cardViewbahasa.setOnClickListener(this);
-
-        cardViewsandi = view.findViewById(R.id.crdSandi);
-        cardViewsandi.setOnClickListener(this);
-
-        ubahNama = view.findViewById(R.id.ubahnaama);
-        ubahNama.setOnClickListener(this);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_bid_tab, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -124,38 +90,6 @@ public class AkunFragment extends Fragment implements View.OnClickListener {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_keluar:
-                FirebaseAuth.getInstance().signOut();
-                SharedPreferences sharedPreferences
-                        = this.getActivity().getSharedPreferences("akun",
-                        Context.MODE_PRIVATE);
-                SharedPreferences.Editor myEdit
-                        = sharedPreferences.edit();
-                myEdit.putBoolean("is_logged_before",false);
-                myEdit.commit();
-                Intent pindah = new Intent(getActivity(), LoginActivity.class);
-                startActivity(pindah);
-                break;
-            case R.id.crdBahasaa:
-                Intent bahasa = new Intent(getActivity(), UbahBahasa.class);
-                startActivity(bahasa);
-                break;
-            case R.id.crdSandi:
-                Intent sandi = new Intent(getActivity(), UbahSandi.class);
-                startActivity(sandi);
-                break;
-            case R.id.ubahnaama:
-                Intent name = new Intent(getActivity(), NamaUbah.class);
-                startActivity(name);
-                break;
-            default:
-                break;
-        }
     }
 
     /**

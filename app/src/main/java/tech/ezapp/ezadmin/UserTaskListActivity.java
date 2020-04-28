@@ -1,19 +1,19 @@
 package tech.ezapp.ezadmin;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import tech.ezapp.ezadmin.Model.Post;
-import tech.ezapp.ezadmin.Model.saldoPost;
-import tech.ezapp.ezadmin.dummy.DummyContent;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+
+import tech.ezapp.ezadmin.Model.saldoPost;
+import tech.ezapp.ezadmin.dummy.DummyContent;
 
 public class UserTaskListActivity extends AppCompatActivity implements DetailUserTaskFragment.OnListFragmentInteractionListener {
 
@@ -76,8 +76,9 @@ public class UserTaskListActivity extends AppCompatActivity implements DetailUse
 //        return false;
 //    }
 
+
     @Override
-    public void onListFragmentInteraction(saldoPost item) {
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
 
     }
 }
